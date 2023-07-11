@@ -39,60 +39,6 @@ export default function Home() {
                             </View>
                         )
                     })}
-                    {product.map((product: Product) => {
-                        return (
-                            <View key={product.id} style={styles.item}>
-                                <Text style={styles.id}>{product.id}</Text>
-                                <Text style={styles.title}>{product.title}</Text>
-                                {/* <Text>{product.content}</Text> */}
-                            </View>
-                        )
-                    })}
-                    {product.map((product: Product) => {
-                        return (
-                            <View key={product.id} style={styles.item}>
-                                <Text style={styles.id}>{product.id}</Text>
-                                <Text style={styles.title}>{product.title}</Text>
-                                {/* <Text>{product.content}</Text> */}
-                            </View>
-                        )
-                    })}
-                    {product.map((product: Product) => {
-                        return (
-                            <View key={product.id} style={styles.item}>
-                                <Text style={styles.id}>{product.id}</Text>
-                                <Text style={styles.title}>{product.title}</Text>
-                                {/* <Text>{product.content}</Text> */}
-                            </View>
-                        )
-                    })}
-                    {product.map((product: Product) => {
-                        return (
-                            <View key={product.id} style={styles.item}>
-                                <Text style={styles.id}>{product.id}</Text>
-                                <Text style={styles.title}>{product.title}</Text>
-                                {/* <Text>{product.content}</Text> */}
-                            </View>
-                        )
-                    })}
-                    {product.map((product: Product) => {
-                        return (
-                            <View key={product.id} style={styles.item}>
-                                <Text style={styles.id}>{product.id}</Text>
-                                <Text style={styles.title}>{product.title}</Text>
-                                {/* <Text>{product.content}</Text> */}
-                            </View>
-                        )
-                    })}
-                    {product.map((product: Product) => {
-                        return (
-                            <View key={product.id} style={styles.item}>
-                                <Text style={styles.id}>{product.id}</Text>
-                                <Text style={styles.title}>{product.title}</Text>
-                                {/* <Text>{product.content}</Text> */}
-                            </View>
-                        )
-                    })}
                 </ScrollView>
             )}
         </View>
@@ -101,13 +47,12 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#000',
-        // color: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
 
         flexDirection: 'column',
+        height: '100%',
+        width: '100%',
     },
 
     view: {
@@ -119,26 +64,31 @@ const styles = StyleSheet.create({
     },
 
     loaded: {
-        flex: 1,
-        flexDirection: 'column',
-        // justifyContent: 'space-between',
         gap: 5,
-        backgroundColor: '#fac',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        minWidth: '100%',
+        padding: 15,
     },
 
     item: {
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-        padding: 5,
-        // borderRadius: 8,
         flex: 1,
         flexDirection: 'column',
         flexGrow: 1,
         flexShrink: 0,
         flexBasis: 100,
-        height: 100,
-        // borderWidth: 1,
-        // borderColor: '#fff',
-        // borderStyle: 'solid',
+
+        height: 200,
+        padding: 5,
+        backgroundColor: 'rgba(225, 225, 225, 1)',
+
+        borderWidth: 3,
+        borderColor: '#fff',
+        borderStyle: 'solid',
+        borderRadius: 8,
+
+        shadowColor: '#000',
+        elevation: 5,
     },
 
     id: {},

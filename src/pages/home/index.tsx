@@ -1,44 +1,99 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
+
+import Product from 'js/interfaces/Product'
 
 import api from 'src/js/api'
 
-interface Category {
-    created_at: Date,
-    updated_at: Date,
-    created_by?: Number,
-    updated_by?: Number,
-
-    description: string,
-    parent_id?: Number,
-    id: string,
-}
 
 export default function Home() {
     const [loading, setLoading] = useState(true)
-    const [categories, setCategories] = useState([])
+    const [product, setProducts] = useState<Product[]>([])
 
-    api.get('/category').then((response) => {
-        setLoading(false)
-        setCategories(response.data)
-    }).catch(error => console.error(error.response))
+    const getProduct = () => {
+        return api.get('/product').then((response) => {
+            setLoading(false)
+            setProducts(response.data)
+            console.log('Vem sempre')
+        }).catch(error => console.error(error.response))
+    }
+
+    useEffect(() => {
+        getProduct()
+    }, [])
 
     return (
         <View style={styles.container}>
             {loading ? (
-                <Text>CARREGANDO....</Text>
+                <View style={styles.view}>
+                    <Text style={styles.loading}>CARREGANDO....</Text>
+                </View>
             ) : (
-                <Text>
-                    {categories.map((category: Category) => {
+                <ScrollView contentContainerStyle={styles.loaded}>
+                    {product.map((product: Product) => {
                         return (
-                            <Text key={category.id}>
-                                {category.id}
-                                {'\n'}
-                                {category.description}
-                            </Text>
+                            <View key={product.id} style={styles.item}>
+                                <Text style={styles.id}>{product.id}</Text>
+                                <Text style={styles.title}>{product.title}</Text>
+                                {/* <Text>{product.content}</Text> */}
+                            </View>
                         )
                     })}
-                </Text>
+                    {product.map((product: Product) => {
+                        return (
+                            <View key={product.id} style={styles.item}>
+                                <Text style={styles.id}>{product.id}</Text>
+                                <Text style={styles.title}>{product.title}</Text>
+                                {/* <Text>{product.content}</Text> */}
+                            </View>
+                        )
+                    })}
+                    {product.map((product: Product) => {
+                        return (
+                            <View key={product.id} style={styles.item}>
+                                <Text style={styles.id}>{product.id}</Text>
+                                <Text style={styles.title}>{product.title}</Text>
+                                {/* <Text>{product.content}</Text> */}
+                            </View>
+                        )
+                    })}
+                    {product.map((product: Product) => {
+                        return (
+                            <View key={product.id} style={styles.item}>
+                                <Text style={styles.id}>{product.id}</Text>
+                                <Text style={styles.title}>{product.title}</Text>
+                                {/* <Text>{product.content}</Text> */}
+                            </View>
+                        )
+                    })}
+                    {product.map((product: Product) => {
+                        return (
+                            <View key={product.id} style={styles.item}>
+                                <Text style={styles.id}>{product.id}</Text>
+                                <Text style={styles.title}>{product.title}</Text>
+                                {/* <Text>{product.content}</Text> */}
+                            </View>
+                        )
+                    })}
+                    {product.map((product: Product) => {
+                        return (
+                            <View key={product.id} style={styles.item}>
+                                <Text style={styles.id}>{product.id}</Text>
+                                <Text style={styles.title}>{product.title}</Text>
+                                {/* <Text>{product.content}</Text> */}
+                            </View>
+                        )
+                    })}
+                    {product.map((product: Product) => {
+                        return (
+                            <View key={product.id} style={styles.item}>
+                                <Text style={styles.id}>{product.id}</Text>
+                                <Text style={styles.title}>{product.title}</Text>
+                                {/* <Text>{product.content}</Text> */}
+                            </View>
+                        )
+                    })}
+                </ScrollView>
             )}
         </View>
     )
@@ -47,9 +102,48 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // backgroundColor: '#000',
+        backgroundColor: '#000',
         // color: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+
+        flexDirection: 'column',
     },
-});
+
+    view: {
+        height: '100%',
+    },
+
+    loading: {
+        color: '#fff',
+    },
+
+    loaded: {
+        flex: 1,
+        flexDirection: 'column',
+        // justifyContent: 'space-between',
+        gap: 5,
+        backgroundColor: '#fac',
+    },
+
+    item: {
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        padding: 5,
+        // borderRadius: 8,
+        flex: 1,
+        flexDirection: 'column',
+        flexGrow: 1,
+        flexShrink: 0,
+        flexBasis: 100,
+        height: 100,
+        // borderWidth: 1,
+        // borderColor: '#fff',
+        // borderStyle: 'solid',
+    },
+
+    id: {},
+
+    title: {
+        fontWeight: 'bold',
+    },
+})

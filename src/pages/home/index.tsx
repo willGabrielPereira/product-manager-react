@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, ScrollView, FlatList } from 'react-native'
+import { Text, View, FlatList } from 'react-native'
 
 import Product from 'js/interfaces/Product'
 
 import api from 'src/js/api'
 import SimpleCard from 'components/simpleCard'
+import { styles } from './style'
 
 
 export default function Home() {
@@ -43,29 +44,3 @@ export default function Home() {
         </View>
     )
 }
-
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#000',
-    },
-
-    loading: {
-        flex: 1,
-        flexBasis: "100%",
-        height: '100%',
-        justifyContent: 'center',
-        alignContent: 'center',
-    },
-
-    loadingText: {
-        textAlign: 'center',
-        color: '#fff',
-    },
-
-    list: {
-        gap: 5,
-        backgroundColor: '#fac',
-        // flexDirection: 'row',
-    },
-})
